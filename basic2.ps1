@@ -9,3 +9,8 @@ Get-Verb re*
 
 <# Or from a certain group #>
 Get-Verb | Where-Object Group -eq Security
+
+
+
+<# profiles in powershell #>
+$PROFILE | Format-List * -force
