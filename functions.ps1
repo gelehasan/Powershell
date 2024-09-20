@@ -30,3 +30,26 @@ function Invoke-Greetings {
 				}
 		}
 }
+
+
+function Invoke-Greeting {
+ [CmdletBinding()]
+ param (
+ [Parameter(Mandatory, ValueFromPipeline, 
+ValueFromPipelineByPropertyName)]
+ [string]$Name
+ )
+ process {
+ Write-Output "Hello $Name!"
+ }
+ }
+ 
+ 
+ #when used by value, seems like it can be good too pass  multiple values
+  > "Alice","Bob" | Invoke-Greeting
+ Hello Alice!
+ Hello Bob!
+ 
+ # When used by property name
+ > [pscustomobject]@{Name = "Miriam"} | Invoke-Greeting
+ Hello Miriam!
